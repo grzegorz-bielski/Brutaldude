@@ -2,3 +2,5 @@ django==2.1
 djangorestframework
 ipython
 psycopg2
+djangorestframework-jwt
+djangorestframework-camel-case
