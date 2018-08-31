@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
+from characters.urls import type_url, characters_url
 
 token_urls = [
     path('obtain/', obtain_jwt_token),
@@ -25,8 +26,11 @@ token_urls = [
 ]
 
 api_urls = [
+    path('', include('rest_framework.urls')),
     path('users/', include('users.urls')),
     path('token/', include(token_urls)),
+    path('characters/', include(characters_url)),
+    path('types/', include(type_url))
 ]
 
 urlpatterns = [
