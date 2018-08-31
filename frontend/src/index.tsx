@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import LoginComponent from './login/LoginForm';
+import "bulma/css/bulma.css";
 
 ReactDOM.render(
-  <App />,
+  <LoginComponent />,
   document.getElementById('root')
 );
 registerServiceWorker();
