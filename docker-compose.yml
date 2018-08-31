@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   frontend:
@@ -6,15 +6,15 @@ services:
     command: bash -c "cd ./frontend; yarn && yarn start"
     volumes:
       - ./frontend:/frontend
-  
+
   backend:
     build: ./backend
     volumes:
       - ./backend:/backend
       - static:/backend/static
-    env_file:
-      ./environments
-    
+    env_file: 
+      - ./environments
+
   nginx:
     build: ./nginx
     volumes:
@@ -24,8 +24,10 @@ services:
 
   postgres:
     image: postgres
-    env_file:
-      ./environments
+    env_file: 
+      - ./environments
+    ports:
+      - 8432:5432
 
 volumes:
   static:

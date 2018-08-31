@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'characters.apps.CharactersConfig'
 ]
 
 MIDDLEWARE = [
@@ -102,11 +103,11 @@ WSGI_APPLICATION = 'Brutaldude.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['POSTGRES_DB'],
-        'USER': os.environ['POSTGRES_USER'],
-        'HOST': os.environ['DB_HOST'],
-        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'PORT': os.environ['PGPORT'],
+        'NAME': 'postgres',
+        'USER': 'BrutalDude',
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PASSWORD': 'pass',
+        'PORT': os.environ.get('PGPORT', 8432),
     }
 }
 
