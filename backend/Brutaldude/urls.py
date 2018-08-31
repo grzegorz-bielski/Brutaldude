@@ -18,11 +18,18 @@ from django.urls import path
 from django.conf.urls import include
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
+token_urls = [
+    path('obtain/', obtain_jwt_token),
+    path('refresh/', refresh_jwt_token),
+    path('verify/', verify_jwt_token),
+]
+
+api_urls = [
+    path('users/', include('users.urls')),
+    path('token/', include(token_urls)),
+]
 
 urlpatterns = [
-    path('api/', include('users.urls')),
-    path('api/token-obtain/', obtain_jwt_token),
-    path('api/refresh-token/', refresh_jwt_token),
-    path('api/verify-token/', verify_jwt_token),
+    path('api/', include(api_urls)),
     path('admin/', admin.site.urls),
 ]
