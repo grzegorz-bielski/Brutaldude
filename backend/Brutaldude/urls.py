@@ -28,6 +28,7 @@ token_urls = [
 api_urls = [
     path('', include('rest_framework.urls')),
     path('users/', include('users.urls')),
+    path('fights/', include('fights.urls')),
     path('token/', include(token_urls)),
     path('characters/', include(characters_url)),
     path('types/', include(type_url))

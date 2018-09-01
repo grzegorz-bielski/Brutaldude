@@ -22,7 +22,7 @@ class Character(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True)
 
     type = models.ForeignKey(
-        CharacterTypes, on_delete=models.CASCADE, default=None, null=True)
+        CharacterTypes, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return f"{self.owner} : {self.name}"
+        return f"Character; name: {self.name}, owner: {self.owner}, health: {self.health}, defense: {self.defense},"
