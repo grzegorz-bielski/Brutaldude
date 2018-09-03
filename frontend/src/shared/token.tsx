@@ -17,7 +17,7 @@ export interface ITokenData {
     exp: string;
 }
 
-export const  getTokenValue = () => localStorage.getItem('JTW-Token')
+export const  getTokenValue = () => localStorage.getItem('JWT-Token')
 
 export function getUserData(): IUser {
     const token: string | null = getTokenValue()

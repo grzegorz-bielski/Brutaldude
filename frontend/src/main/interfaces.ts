@@ -5,10 +5,20 @@ export interface IUser {
 
 export interface IState {
     user: IUser
-    activeTab: ITab
+    activeTab: ITab | null
 }
 
 export interface ITab {
-    content: React.Component | string
+    content: string | JSX.Element
     name: string
+}
+
+export interface ICharacter {
+    defense: number;
+    health: number;
+    id: number;
+    name: string;
+    owner: number;
+    power: number;
+    type: number;
 }
