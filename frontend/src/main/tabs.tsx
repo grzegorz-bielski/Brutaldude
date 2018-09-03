@@ -1,33 +1,25 @@
 import * as React from 'react';
 import { ITab } from './interfaces';
 
-export const tabList: ITab[] = [
-    {
-        content: "Character",
-        name: "Character",
-    }, {
-        content: "Create Character",
-        name: "Create Character"
+import { ListComponent } from '../list/list'
+import { CreateComponent } from '../list/create'
+import { ICharacter } from '../main/interfaces'
 
-    }, {
-        content: "Figth",
-        name: "Figth"
-    }
-];
 
 interface ITabProps {
-    tab: ITab;
+    tab: ITab | null;
     key: number;
-    activeTab: ITab;
-    changeActiveTab: (tab: ITab) => void;
+    activeTab: ITab | null;
+    changeActiveTab: (tab: ITab | null) => void;
 }
 
 interface ITabsProps {
-    activeTab: ITab;
+    activeTab: ITab | null;
     onClickHandle: (tab: ITab) => void;
 }
 
 const Tab = (probs: ITabProps) =>{
+    if(probs.tab === null){ return <div/>}
     const changeFunction = () => probs.changeActiveTab(probs.tab)
 
     return <li className={probs.tab === probs.activeTab ? "is-active" : ""}
@@ -39,14 +31,33 @@ const Tab = (probs: ITabProps) =>{
     </li>
     }
 
+interface IState {
+    characters: ICharacter[]
+}
+
 export class Tabs extends React.Component<{}> {
     public props: ITabsProps
+    public state: IState
+
+    public tabList = [
+        {
+            content: <ListComponent />,
+            name: "Characters",
+        }, {
+            content: <CreateComponent />,
+            name: "Create Character"
+    
+        }, {
+            content: "Figth 123",
+            name: "Figth"
+        }
+    ];
 
     public render() {
         return (
             <div className="tabs">
                 <ul>
-                    {tabList.map((tab,index) => 
+                    {this.tabList.map((tab,index) => 
                         <Tab 
                             tab={tab} 
                             key={index} 
@@ -57,4 +68,6 @@ export class Tabs extends React.Component<{}> {
             </div>
         );
     }
+    
+
 }

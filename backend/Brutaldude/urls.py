@@ -19,6 +19,7 @@ from django.conf.urls import include
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 from characters.urls import type_url, characters_url
 
+
 token_urls = [
     path('obtain/', obtain_jwt_token),
     path('refresh/', refresh_jwt_token),

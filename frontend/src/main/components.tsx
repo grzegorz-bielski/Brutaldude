@@ -1,19 +1,19 @@
 import * as React from 'react';
 import * as  ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { Tabs, tabList } from './tabs'
+import { Tabs } from './tabs'
 import { IState, ITab, IUser } from './interfaces';
 import { getUserData } from '../shared/token'
 
 interface IActiveTimeContenctProps {
-    content: string | React.Component;
-    tab: ITab;
+    content: string | JSX.Element;
+    tab: ITab | null;
 }
 
 const ActiveTabContent = (props: IActiveTimeContenctProps) => <div>{props.content}</div>;
 
 export class DashboardComponent extends React.Component<{}> {
-    public state: IState = {activeTab: tabList[1], user: getUserData()}
+    public state: IState = {activeTab: null, user: getUserData()}
 
     public render() {
         return (
@@ -39,7 +39,7 @@ export class DashboardComponent extends React.Component<{}> {
       )
     }
 
-    public activeTabContent = () => this.state.activeTab.content
+    public activeTabContent = () => this.state.activeTab === null? "": this.state.activeTab.content
 
     public onClickHandle = (tab: ITab) => {
         const userData: IUser = this.state.user
